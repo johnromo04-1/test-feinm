@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -341,32 +342,36 @@ export default function Home() {
                 type: "Residential Development",
                 tags: ["Earthmoving", "Grading", "Utilities"],
                 desc: "Large-scale residential site preparation including mass grading, cut and fill operations, and underground utility installation across the Juan Tabo Hills development.",
+                img: "/images/juan_tabo_hills.png",
               },
               {
                 name: "Isleta Casino Parking Lot",
                 type: "Commercial Paving",
                 tags: ["Paving", "Concrete", "Curb & Gutter"],
                 desc: "Full parking lot reconstruction for Isleta Casino Resort — asphalt paving, concrete curb and gutter, ADA compliance upgrades, and surface drainage improvements.",
+                img: "/images/isleta.png",
               },
               {
                 name: "Paseo Gateway",
                 type: "Infrastructure",
                 tags: ["Earthmoving", "Paving", "Utilities"],
                 desc: "Gateway infrastructure project featuring roadway earthwork, asphalt paving, storm drainage system installation, and site finishing to municipal specifications.",
+                img: "/images/paseo.png",
               },
-            ].map(({ name, type, tags, desc }) => (
+            ].map(({ name, type, tags, desc, img }) => (
               <div
                 key={name}
                 className="bg-[#0f1923] border border-white/10 overflow-hidden hover:border-[#f5c518]/50 hover:shadow-[0_0_24px_rgba(245,197,24,0.08)] transition-all group"
               >
-                {/* Placeholder image area */}
-                <div className="h-44 sm:h-48 bg-gradient-to-br from-[#111d2b] to-[#080d12] flex items-center justify-center border-b border-white/10 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-[#f5c518]/5 group-hover:bg-[#f5c518]/10 transition-colors" />
-                  <div className="absolute inset-0 scanlines opacity-25" />
-                  <div className="text-center z-10">
-                    <p className="text-[#f5c518]/30 text-5xl sm:text-6xl font-black group-hover:text-[#f5c518]/50 group-hover:glow-text transition-all">FE</p>
-                    <p className="text-gray-700 text-xs uppercase tracking-widest mt-1">Project Photo</p>
-                  </div>
+                {/* Project image */}
+                <div className="h-44 sm:h-48 border-b border-white/10 relative overflow-hidden">
+                  <Image
+                    src={img}
+                    alt={name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-[#0f1923]/30 group-hover:bg-[#0f1923]/10 transition-colors" />
                   <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#f5c518] scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
                 </div>
 
